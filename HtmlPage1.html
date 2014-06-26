@@ -1,0 +1,159 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="Scripts/jquery-1.7.1.js"></script>
+    <script src="Scripts/bootstrap.js"></script>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <script src="Scripts/jquery-ui-1.8.20.js"></script>
+    <link href="Content/jquery-ui-1.10.4.css" rel="stylesheet" />
+    
+    <style></style>
+     <script>
+         $(function () {
+             var availableTags = [
+               "ActionScript",
+               "AppleScript",
+               "Asp",
+               "BASIC",
+               "C",
+               "C++",
+               "Clojure",
+               "COBOL",
+               "ColdFusion",
+               "Erlang",
+               "Fortran",
+               "Groovy",
+               "Haskell",
+               "Java",
+               "JavaScript",
+               "Lisp",
+               "Perl",
+               "PHP",
+               "Python",
+               "Ruby",
+               "Scala",
+               "Scheme"
+             ];
+             availableTags.push("raheel");
+             $("#tags").autocomplete({
+                 source: availableTags
+             });
+         });
+  </script>
+    <script src="Scripts/jquery.jplayer.min.js"></script>
+    <script src="Scripts/jquery.jplayer.inspector.js"></script>
+    <style>
+        a.list-group-item {
+    height:auto;
+    min-height:220px;
+}
+a.list-group-item.active small {
+    color:#fff;
+}
+.stars {
+    margin:20px auto 1px;    
+}
+    </style>
+</head>
+<body >
+    <div class="progress-bar"></div>
+       
+  <!--  <nav class="navbar navbar-inverse" role="navigation">
+        <div class="navbar-header">
+            <p class="navbar-brand">Video Viewer</p> 
+        </div>
+
+        <form class="navbar-form navbar-right" method="post" action="#">
+            <button type="submit" class="btn btn-default" >Upload</button>
+        </form>
+        <form class="navbar-form navbar-right" method="post" action="Video/Login" >
+            <button type="submit" class="btn btn-primary" >Sign In</button>
+        </form>
+        <!-- use Date Picker and define method and action for the request-->
+     <!--  <div style="right: 100px;">
+        <form class="navbar-form navbar-right" role="search" method="post" action="#" >
+            <div class="form-group" style="grid-column-align:center">
+                <div class="ui-widget">
+                <input type="text" id="tags" placeholder="Search Your Video"  class="form-control" size="60"/>
+                    </div>
+            </div>
+            <button type="submit" class="btn btn-default" >Search</button>
+        </form>
+        </div>
+    </nav>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-6" style="background-color:black ; height:400px ;">
+
+            <video controls="controls" tabindex="0"  autoplay="autoplay" >
+                <source src="maaa.mp4" type="video/mp4"/>
+            </video>
+
+        </div>
+        <div class="col-md-3 ">
+            
+            <div class="list-group">
+               <div class="list-group-item">
+                   <div class="row">
+                 <div class="col-md-4"> <img src="login.jpg" width="100" height="100"  /> </div><div class="col-md-8">helllooo dlk kjsdf  sjdkfjk skdjfk sjsjflkjl fjks jfksfklsj ksjlfkjs fjslkfjdslkfj </div></div>
+                   </div>
+                 <a href="login.jpg" class="list-group-item" >Second</a>
+                 <a href="login.jpg" class="list-group-item">Third</a>
+                
+            </div>
+        </div>
+        </div>-->
+    -->
+    
+    
+    
+   <div id="jquery_jplayer_2" class="jp-jplayer"></div>
+<div id="jp_container_2" class="jp-audio">
+	<div class="jp-type-playlist">
+		<div class="jp-gui jp-interface">
+			<ul class="jp-controls">
+				<li><a href="javascript:;" class="jp-previous" tabindex="1">previous</a></li>
+				<li><a href="javascript:;" class="jp-play" tabindex="1">play</a></li>
+				<li><a href="javascript:;" class="jp-pause" tabindex="1">pause</a></li>
+				<li><a href="javascript:;" class="jp-next" tabindex="1">next</a></li>
+				<li><a href="javascript:;" class="jp-stop" tabindex="1">stop</a></li>
+				<li><a href="javascript:;" class="jp-mute" tabindex="1" title="mute">mute</a></li>
+				<li><a href="javascript:;" class="jp-unmute" tabindex="1" title="unmute">unmute</a></li>
+				<li><a href="javascript:;" class="jp-volume-max" tabindex="1" title="max volume">max volume</a></li>
+			</ul>
+			<div class="jp-progress">
+				<div class="jp-seek-bar">
+					<div class="jp-play-bar"></div>
+				</div>
+			</div>
+            <div class="">hello
+
+            </div>
+			<div class="jp-volume-bar">
+				<div class="jp-volume-bar-value"></div>
+			</div>
+			<div class="jp-time-holder">
+				<div class="jp-current-time"></div>
+				<div class="jp-duration"></div>
+			</div>
+			<ul class="jp-toggles">
+				<li><a href="javascript:;" class="jp-shuffle" tabindex="1" title="shuffle">shuffle</a></li>
+				<li><a href="javascript:;" class="jp-shuffle-off" tabindex="1" title="shuffle off">shuffle off</a></li>
+				<li><a href="javascript:;" class="jp-repeat" tabindex="1" title="repeat">repeat</a></li>
+				<li><a href="javascript:;" class="jp-repeat-off" tabindex="1" title="repeat off">repeat off</a></li>
+			</ul>
+		</div>
+		<div class="jp-playlist">
+			<ul>
+				<li></li>
+			</ul>
+		</div>
+		<div class="jp-no-solution">
+			<span>Update Required</span>
+			To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+		</div>
+	</div>
+</div>
+</body>
+</html>

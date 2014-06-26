@@ -1,0 +1,78 @@
+﻿@{
+    ViewBag.Title = "Login";
+    
+}
+@model FinalTermProject.Models.User
+
+<script>
+    $(document).ready(function () {
+          
+        $('#f1').submit(function() {
+            var x;
+           // alert('sdlkj');
+            $.getJSON("SignIn/Check_Login", function (data) {
+
+                alert('dlkjf');
+                if (data) {
+                    return true;
+                }
+                else
+                {
+                    return  false;
+                    document.getElementById('errorMessage').innerHTML = 'Your User_Name or Password is Invalid';   
+                }
+            });
+            return x;
+        });
+    });
+   
+</script>
+<div class="container">
+   
+        <div class="row">
+
+            <div class="col-md-8"></div>
+              <div class="col-xs-12 col-sm-12 col-md-4 well well-sm">
+                   <fieldset><legend>Sign In</legend>
+
+                       @using (Html.BeginForm("Check_Login", "SignIn", FormMethod.Post, new { @class="form" , role="form" , onsubmit="return " , id="f1"}))
+                       {
+                           @Html.ValidationMessageFor(m => m.Name) <br />
+                           @Html.TextBoxFor(m => m.Name, new { placeholder = "Enter Name", @class = "form-control", role = "form",required="required" }) <br />
+                           @Html.ValidationMessageFor(m => m.Password) <br />
+                           @Html.TextBoxFor(m => m.Password, new { type="password" ,placeholder = "Type Password", @class = "form-control", role = "form",required="required" }) <br />
+                            <button class="btn btn-lg btn-success btn-block" id="login" type="submit">
+                                   Login</button>
+                           <div id="errorMessage"></div>
+                       }
+                       @*<form action="/SignIn/Check_Login" method="post" class="form" role="form">
+                             <input class="form-control" name="Name" placeholder="Enter Name" type="text" required/>              <br />
+                             <input class="form-control" name="Password" placeholder="Type Password" type="password" required/>   <br />*@
+                           
+                         
+                       @*</form>*@
+                       <br />
+                                <div class="row">
+                                      <div class="col-xs-12 col-md-12" style="text-align:center"> <b>OR</b></div>
+                                        
+                                  </div>
+                       @using (Html.BeginForm("SignUp", "SignUp", FormMethod.Post, new { @class="form",role="form"}))
+                       { 
+                            <button class="btn btn-lg btn-primary btn-block" type="submit">
+                                   Register </button>
+                       }
+                     @*  <form action="/SignUp/SignUp" method="post" class="form" role="form">
+                           <button class="btn btn-lg btn-primary btn-block" type="submit">
+                                   Register </button>
+                       </form>*@
+                    </fieldset>             
+              </div>
+            </div>
+    </div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+

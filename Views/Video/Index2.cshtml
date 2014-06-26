@@ -1,0 +1,58 @@
+﻿@{
+    ViewBag.Title = "Index2";
+}
+
+<script>
+    window.onbeforeunload = function () { location.reload(); };
+   
+</script>
+ <div class="row">
+        <div class="col-md-2"></div>
+        
+
+       <div class="col-md-5 ">
+     
+           
+            <div class="list-group">
+                <a href="#" class="list-group-item active"> <b>Your Video</b> </a>
+                 @foreach (var item in Model)
+                 {
+               <div class="list-group-item">
+                  
+                   
+                      <a href="Video/Index?Name=@item.Name" > 
+                 @*  <form action="/Video/Index" method="post" >
+                   <input type="hidden" value="@item.Name" name="Name" />*@
+                   <div class="row">
+            
+                 <div class="col-md-10" style="background-color:gray"> 
+                     <video width="120" height="100" >
+                    @if(item.Name.Split('.')[1].Equals("mp4"))
+                         {
+                            <source src="/api/VideoPlay/mp4/@item.Name.Split('.')[0]"   type=""/> 
+                         }
+                         @if(item.Name.Split('.')[1].Equals("webm"))
+                         {
+                            <source src="/api/VideoPlay/webm/@item.Name.Split('.')[0]"   type="video/webm"/> 
+                         }
+                         @if(item.Name.Split('.')[1].Equals("ogg"))
+                         {
+                            <source src="/api/VideoPlay/ogg/@item.Name.Split('.')[0]"   type="video/ogg" /> 
+                         }
+                        </video>
+                         
+                     
+
+                 </div>
+                  
+                       <div class="col-md-2">@item.Name.Split('.')[0]  </div></div>
+                    </a>
+                     @*  <input type="submit" />*@
+                       @*</form>*@
+                 </div>
+                   }
+                   
+                
+            </div>
+        </div>
+    </div>

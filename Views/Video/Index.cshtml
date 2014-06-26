@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "Video Viewer";   
+ }
+
+
+ <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-6" style=" height:400px ;">
+            <script>
+               // alert(@ViewBag.x)
+                </script>
+            <video  height="340"  controls="controls" autoplay="autoplay" >
+                @*<source src="/api/VideoPlay/mp4/@ViewBag.x"+".mp4" type="video/mp4" />*@
+                <source src="/api/VideoPlay/webm/@ViewBag.x" type="video/webm" />
+                
+            </video>
+        </div>
+
+       <div class="col-md-3 ">
+     
+           
+            <div class="list-group">
+                 @foreach (var item in Model)
+                 {
+               <div class="list-group-item">
+                  
+                   
+                      <a href="/Video/Index?Name=@item.Name"> 
+                   <div class="row">
+            
+                 <div class="col-md-5" > 
+                     <video width="120" height="100" >
+                         @if(item.Name.Split('.')[1].Equals("mp4"))
+                         {
+                            <source src="/api/VideoPlay/mp4/files2.mp4"   type="video/mp4"/> 
+                         }
+                         @if(item.Name.Split('.')[1].Equals("webm"))
+                         {
+                            <source src="/api/VideoPlay/webm/files2"   type="video/webm"/> 
+                         }
+                         @if(item.Name.Split('.')[1].Equals("ogg"))
+                         {
+                            <source src="/api/VideoPlay/ogg/files2"   type="video/ogg" /> 
+                         }
+                     </video>
+
+                 </div>
+                  
+                       <div class="col-md-7">@item.Name  </div></div>
+                    </a>
+                 </div>
+                   }
+                   
+               
+             
+                
+            </div>
+        </div>
+    </div>

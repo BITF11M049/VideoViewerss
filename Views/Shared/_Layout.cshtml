@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+      
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+  
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/jquery-ui-1.8.20.js"></script>
+    <link href="~/Content/jquery-ui-1.10.4.css" rel="stylesheet" />
+    
+
+    <script>
+        $(document).ready(function () {
+
+            $('#search').keyup(function () {
+
+                
+                $.getJSON("/Video/search?value=" + $('#search').val(),
+                                    function (data)
+                                    {
+                                        var array_list = [] ;
+                                        $.each(data, function (i, x) {
+                                           
+                                            array_list[i] = x;
+                                            
+                                        });
+
+
+                                        $('#search').autocomplete({ source: array_list });
+                                       
+                                    });
+            });
+        });
+    </script>
+</head>
+<body id="body">
+     <nav class="navbar navbar-inverse" role="navigation">
+        <div class="navbar-header">
+            <p class="navbar-brand">Video Viewer</p> 
+        </div>
+         <div>
+             @if(Session["login"] == null)
+             {
+                <form class="navbar-form navbar-right" method="post"  action="/SignIn/Login">
+                    <button  class="btn btn-primary" >Sign In</button>
+                </form>
+             }
+             @if(Session["login"] != null)
+             {
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/Profile/Index" style="color:whitesmoke ; font:bold">Profile</a></li>
+                    <li><a href="/Video/Logout" style="color:greenyellow">Logout</a></li>
+                </ul>
+             }
+            <form class="navbar-form navbar-right" method="post" action="/Upload/Upload">
+                <button type="submit" class="btn btn-default" >Upload</button>
+            </form>
+         </div>
+       
+        <!-- use Date Picker and define method and action for the request-->
+        
+        <form class="navbar-form navbar-right" role="search" method="post" action="/Video/Search_video">
+            <div class="form-group">
+                <input type="text" placeholder="Search Your Video" id="search" name="video_name" class="form-control" size="60"/>
+            </div>
+            <button type="submit" class="btn btn-default" >Search</button>
+        </form>
+        
+    </nav>
+    
+  @RenderBody()
+
+     
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = "Upload";
+}
+
+<script type="text/javascript">
+
+       $(document).ready(function () {
+
+           var AllowedExtension = ['webm'];
+
+           $("#FileUpload1").change(function () {
+
+               if ($.inArray($(this).val().split('.').pop().toLowerCase(), AllowedExtension) == -1)
+               {
+                   alert('"Only \'webm\' format are allowed."');
+                   $('#FileUpload1').text('');
+               }
+               
+           });
+           
+       });
+
+
+   </script>
+<div class="container">
+    <div class="row">
+        <div class="col-md-2" style="height:200px ; width:200px"></div>
+        
+             <div class="col-xs-12 col-sm-12 col-md-6 well well-sm">
+                 <fieldset> <legend>Upload Video</legend>
+                     <div class="col-xs-2"></div>
+                     <div class="col-xs-9">
+
+                      @*   @using (Html.BeginForm("save", "Upload", FormMethod.Post))
+                         {
+
+                         }*@
+                         <form action="/Upload/save" method="post" enctype="multipart/form-data">
+                            <b>Upload Video:</b> <br /><input type="file" id="FileUpload1" name="image" />
+                             <br />
+                              
+                            <input type="submit" value="upload"  />
+                             <br />
+                             <br />
+                             <br />
+                             <br />
+                             <br />
+
+                            </form>
+                     </div>
+                 </fieldset>
+             </div>
+        </div>
+    </div>
+

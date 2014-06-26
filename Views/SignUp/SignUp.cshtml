@@ -1,0 +1,140 @@
+﻿@{
+    ViewBag.Title = "SignUp";
+}
+
+@model FinalTermProject.Models.User
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $(function() {
+            $( "#datepicker" ).datepicker();
+        });
+        
+        $('#check').click(function () {
+            if ($('#Name').val() == "")
+            {
+                alert('Please Enter Name before check');
+            }
+            else
+            {
+               //alert($('#Name').val().toUpperCase());
+                $.getJSON("/SignUp/GetNames?name="+ $('#Name').val().toUpperCase(),
+                            function (data) {
+                                                //alert(data);
+                                if (data)
+                                {
+                                    // alert('Invalid');
+                                    var x = document.getElementById('showResult');
+                                    x.innerHTML = '<font color="red">Please Select another name , it is in Db</font>';
+                                    var y = document.getElementById('Name');
+                                    y.innerHTML = '';
+                                }
+                                else
+                                {
+                                    //alert('valid');
+                                    var x = document.getElementById('showResult');
+                                    x.innerHTML = '<font color="Green">This is Valid Name</font>';
+                                   
+                                }
+                            });
+            }
+        });
+    });
+   
+</script>
+
+<div class="container" style="border-bottom: inset; border-bottom-color: CaptionText; background: fixed ; ">
+    <div class="row">
+        <div class="col-md-8"><img src="~/Images/images (1).jpg" width="750" height="400" /></div>
+        
+        <div class="col-xs-12 col-sm-12 col-md-4 well well-sm">
+           <fieldset> <legend>Sign up!</legend>
+               @using (Html.BeginForm("Save", "SignUp", FormMethod.Post, new { @class="form" ,role="form"}))
+               { 
+                  <div class="row">
+                    <div class="col-xs-6 col-md-6">
+                            @Html.ValidationMessageFor(m => m.Name)
+                       @Html.TextBoxFor(m => m.Name, new {placeholder="Full Name",required="required",autofocus="autofocus",id="Name"})
+                    
+                    </div>
+                    <div class="col-xs-6 col-md-6">
+                        <button id="check" onclick="return false">Check</button> <br /> <br />
+                    </div>
+                    
+                </div>
+                <div id="showResult"></div>
+                   @Html.ValidationMessageFor(m => m.Email) <br />
+                   <label> Email : </label>
+                    @Html.EditorFor(m => m.Email, new {@placeholder="Your Email", @class="form-control"}) <br />   
+                   
+                   <br />
+                   @Html.ValidationMessageFor(m => m.Password)
+                     @Html.TextBoxFor(m => m.Password, new {@class="form-control" , type="password",placeholder="Type Password",required="required"}) 
+                   
+                   <br />
+                   <br />
+                   
+                <label for="">
+                    Birth Date</label>
+                   @Html.ValidationMessageFor(m => m.Date_of_Birth)
+                   @Html.TextBoxFor(m => m.Date_of_Birth , new {id="datepicker",size="40" }) <br />
+                   
+                    <label class="radio-inline">
+                   @Html.TextBoxFor(m => m.Sex , new {type="radio",id="inlineCheckbox2", value="Female",required="required"})
+                        
+                    Male
+                </label>
+                <label class="radio-inline">
+                    
+                    @Html.TextBoxFor(m => m.Sex, new { type="radio" , id="inlineCheckbox2" , value="Female" ,required="required"})
+                    Female
+                </label>
+                    <br />
+                <br />
+                <button class="btn btn-lg btn-primary btn-block" type="submit">
+                    Sign up</button>
+               }
+           @* <form action="/SignUp/Save" method="post" class="form" role="form">
+                <div class="row">
+                    <div class="col-xs-6 col-md-6">
+                        <input class="form-control" name="Name" placeholder="Full Name" type="text" id="Name"
+                            required autofocus />
+                    </div>
+                    <div class="col-xs-6 col-md-6">
+                        <button id="check" onclick="return false">Check</button> <br /> <br />
+                    </div>
+                    
+                </div>
+                <div id="showResult">
+                    </div>
+                <input class="form-control" name="Email" placeholder="Your Email" type="email" />         <br />*@
+                @*<input class="form-control" name="reenteremail" placeholder="Re-enter Email" type="email" />  <br />*@
+              @*  <input class="form-control" name="Password" placeholder="New Password" type="password" required/>      <br />
+                <label for="">
+                    Birth Date</label>
+                    <input type="text" id="datepicker" size="40" name="Date_of_Birth" required />
+                <label class="radio-inline">
+                    <input type="radio" name="Sex" id="inlineCheckbox1" value="Male" required/>
+                    Male
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="Sex" id="inlineCheckbox2" value="Female" required/>
+                    Female
+                </label>
+                <br />
+                <br />
+                <button class="btn btn-lg btn-primary btn-block" type="submit">
+                    Sign up</button>
+            </form>*@
+               </fieldset>
+        </div>
+
+     </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
